@@ -1,5 +1,6 @@
 # ninja log v6
-8	223	7399511627898987	build.ninja	550fcb0902d65609
-1	323	7399511628199026	CMakeFiles/Project_2.dir/project2_McAllister_jbm0118.cpp.obj	9e8e18c91945b1c9
-324	424	7399511631429847	Project_2.exe	61970671258eae4a
+8	223	7400323110792935	build.ninja	550fcb0902d65609
 6	346	7399569922078395	CMakeFiles/Project_2.dir/project2_McAllister_jbm0118.cpp.obj	9e8e18c91945b1c9
+324	424	7399511631429847	Project_2.exe	61970671258eae4a
+8	562	7400336811951376	CMakeFiles/Project_2.dir/project2_McAllister_jbm0118.cpp.obj	9e8e18c91945b1c9
+6	384	7400366298582922	CMakeFiles/Project_2.dir/project2_McAllister_jbm0118.cpp.obj	9e8e18c91945b1c9
