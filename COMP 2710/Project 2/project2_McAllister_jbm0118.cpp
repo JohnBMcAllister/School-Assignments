@@ -1,9 +1,12 @@
 /* File Name    : project2_McAllister_jbm0118.cpp
  * Author       : JB McAllister
  * User ID      : jbm0118
- * Compilation  : g++ project2_Armstrong_cda0044.cpp -o project2.out
+ * Compilation  : g++ project2_McAllister_jbm0118.cpp -o project2.out
  * I used ChatGPT to help resolve logical error in testing function
- * I used GeeksforGeeks to help understand logic of rand
+ * I used GeeksforGeeks to help understand logic of rand() to make my result_target_shot
+ * I couldn't figure out the incorrect logic of that made strategy 1 better than 2. I know strategy is suppose to be better
+ * I also teamed up with a fellow student to bounce off the possible ideas of how to make the Aaron_shoots1 and Aaron_shoots2 methods
+ *
  */
 # include <iostream>
 # include <stdlib.h>
@@ -51,6 +54,7 @@ bool at_least_two_alive(bool A_alive, bool B_alive, bool C_alive) {
 /* Return: true if at least two are alive */
 /* otherwise return false */
 
+//Collaberated with Christopher Armstrong to co create this method
 void Aaron_shoots1(bool& B_alive, bool& C_alive) {
     assert(B_alive == true || C_alive == true);
     int shootResult = rand() % 100;
@@ -318,7 +322,7 @@ int main() {
     bobWins = 0;
     charlieWins = 0;
     srand(time(0));
-    cout << "Ready to test strategy 2 (run 10000 times);\n";
+    cout << "Ready to test strategy 2 (run 10000 times):\n";
     Press_any_key();
     for (int i = 0; i < TOTAL_RUN; i++) {
         charlieAlive = true;
