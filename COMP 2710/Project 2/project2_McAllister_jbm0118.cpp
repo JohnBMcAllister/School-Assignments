@@ -1,3 +1,10 @@
+/* File Name    : project2_McAllister_jbm0118.cpp
+ * Author       : JB McAllister
+ * User ID      : jbm0118
+ * Compilation  : g++ project2_Armstrong_cda0044.cpp -o project2.out
+ * I used ChatGPT to help resolve logical error in testing function
+ * I used GeeksforGeeks to help understand logic of rand
+ */
 # include <iostream>
 # include <stdlib.h>
 # include <assert.h>
@@ -45,13 +52,15 @@ bool at_least_two_alive(bool A_alive, bool B_alive, bool C_alive) {
 /* otherwise return false */
 
 void Aaron_shoots1(bool& B_alive, bool& C_alive) {
-    assert(aaronAlive == true);
-    bool shot = result_target_shot(aaronAccuracy);
-    if (shot && C_alive) {
+    assert(B_alive == true || C_alive == true);
+    int shootResult = rand() % 100;
+
+    //Determines who to shoot in case one person is dead or the other.
+    if (C_alive && shootResult <= aaronAccuracy) {
         C_alive = false;
         return;
     }
-    if (shot && B_alive) {
+    else if (B_alive && shootResult <= aaronAccuracy) {
         B_alive = false;
         return;
     }
@@ -86,7 +95,7 @@ void Charlie_shoots(bool& A_alive, bool& B_alive) {
 
     assert(A_alive == true || B_alive == true);
     int shootResult = rand() % 100;
-    
+
     if (B_alive && shootResult <= charlieAccuracy) {
         B_alive = false;
         return;
@@ -104,23 +113,11 @@ void Charlie_shoots(bool& A_alive, bool& B_alive) {
 */
 
 void Aaron_shoots2(bool& B_alive, bool& C_alive) {
-    bool hit;
+    assert(B_alive == true || C_alive == true);
 
-    // If Charlie and Bob are alive, miss the shot
-    if (C_alive && B_alive){
-        hit = false;
-    } else {
-        hit = result_target_shot(aaronAccuracy);
-    }
-
-    if (hit && C_alive) {
-        C_alive = false;
-        return;
-    }
-    if (hit && B_alive) {
-        B_alive = false;
-        return;
-    }
+    //Checks whether to miss on purpose or not
+    if (B_alive && C_alive) return;
+    else Aaron_shoots1(B_alive, C_alive);
 }
 /* Strategy 2: Use call by reference
 * Input: B_alive indicates whether Bob alive or dead
@@ -129,6 +126,8 @@ void Aaron_shoots2(bool& B_alive, bool& C_alive) {
 * Change C_alive into false if Charlie is killed.
 */
 
+
+// Used GeeksforGeeks to understand rand and logic
 bool result_target_shot(int probability) {
     int result = rand()%100;
     return result <= probability;
