@@ -189,25 +189,28 @@ void test_Aaron_shoots1(void) {
 }
 
 void test_Bob_shoots() {
-	cout << "Unit Testing 3: Function Bob_shoots(Aaron_alive, Charlie_alive)\n";
+    cout << "Unit Testing 3: Function Bob_shoots(Aaron_alive, Charlie_alive)\n";
 
-	// First Case: Aaron alive, Charlie alive
-	bool aaronAlive = true, charlieAlive = true;
-	cout << "\tCase 1: Aaron alive, Charlie alive\n"
-		 << "\t\tBob is shooting at Charlie\n";
-	Bob_shoots(aaronAlive, charlieAlive);
+    // First Case: Aaron alive, Charlie alive
+    aaronAlive = true;
+    charlieAlive = true;
+    cout << "\tCase 1: Aaron alive, Charlie alive\n"
+         << "\t\tBob is shooting at Charlie\n";
+    Bob_shoots(aaronAlive, charlieAlive);
 
-	// Second Case: Aaron dead, Charlie alive
-	aaronAlive = false, charlieAlive = true;
-	cout << "\tCase 1: Aaron dead, Charlie alive\n"
-		 << "\t\tBob is shooting at Charlie\n";
-	Bob_shoots(aaronAlive, charlieAlive);
+    // Second Case: Aaron dead, Charlie alive
+    aaronAlive = false;
+    charlieAlive = true;
+    cout << "\tCase 2: Aaron dead, Charlie alive\n"
+         << "\t\tBob is shooting at Charlie\n";
+    Bob_shoots(aaronAlive, charlieAlive);
 
-	// Third Case: Aaron alive, Charlie dead
-	aaronAlive = true, charlieAlive = false;
-	cout << "\tCase 3: Aaron alive, Charlie dead\n"
-		 << "\t\tBob is shooting at Aaron\n";
-	Bob_shoots(aaronAlive, charlieAlive);
+    // Third Case: Aaron alive, Charlie dead
+    aaronAlive = true;
+    charlieAlive = false;
+    cout << "\tCase 3: Aaron alive, Charlie dead\n"
+         << "\t\tBob is shooting at Aaron\n";
+    Bob_shoots(aaronAlive, charlieAlive);
 }
 
 void test_Charlie_shoots(){
