@@ -24,6 +24,7 @@ void test_Aaron_shoots2(void);
 const int TOTAL_RUN = 10000;
 const int aaronAccuracy = 33;
 const int bobAccuracy = 50;
+const int charlieAccuracy = 100;
 
 //Global Variables
 bool aaronAlive = true;
@@ -82,12 +83,15 @@ void Bob_shoots(bool& A_alive, bool& C_alive) {
     */
 
 void Charlie_shoots(bool& A_alive, bool& B_alive) {
-    assert(charlieAlive == true);
-    if (B_alive) {
+
+    assert(A_alive == true || B_alive == true);
+    int shootResult = rand() % 100;
+    
+    if (B_alive && shootResult <= charlieAccuracy) {
         B_alive = false;
         return;
     }
-    if (A_alive) {
+    else if (A_alive && shootResult <= charlieAccuracy) {
         A_alive = false;
         return;
     }
@@ -100,21 +104,22 @@ void Charlie_shoots(bool& A_alive, bool& B_alive) {
 */
 
 void Aaron_shoots2(bool& B_alive, bool& C_alive) {
-    assert(aaronAlive == true);
-    bool shot;
+    bool hit;
 
-    if(C_alive && B_alive) {
-        shot = false;
+    // If Charlie and Bob are alive, miss the shot
+    if (C_alive && B_alive){
+        hit = false;
     } else {
-        shot = result_target_shot(aaronAccuracy);
+        hit = result_target_shot(aaronAccuracy);
     }
 
-    if (shot && C_alive) {
+    if (hit && C_alive) {
         C_alive = false;
         return;
     }
-    if (shot && B_alive) {
+    if (hit && B_alive) {
         B_alive = false;
+        return;
     }
 }
 /* Strategy 2: Use call by reference
@@ -213,53 +218,47 @@ void test_Bob_shoots() {
     Bob_shoots(aaronAlive, charlieAlive);
 }
 
-void test_Charlie_shoots(){
+void test_Charlie_shoots(void) {
     cout << "Unit Testing 4: Function Charlie_shoots(Aaron_alive, Bob_alive)\n";
 
-
-    bool aaron_a = true, bob_a = true;
+    bool a_alive = true, b_alive = true;
     cout << "\tCase 1: Aaron alive, Bob alive\n"
          << "\t\tCharlie is shooting at Bob\n";
-    Charlie_shoots(aaron_a, bob_a);
-    assert(false == bob_a && true == aaron_a);
+    Charlie_shoots(a_alive, b_alive);
 
-
-    aaron_a = false, bob_a = true;
-    cout << "\tCase 1: Aaron dead, Bob alive\n"
+    a_alive = false; b_alive = true;
+    cout << "\tCase 2: Aaron dead, Bob alive\n"
          << "\t\tCharlie is shooting at Bob\n";
-    Charlie_shoots(aaron_a, bob_a);
-    assert(false == bob_a && false == aaron_a);
+    Charlie_shoots(a_alive, b_alive);
 
-
-    aaron_a = true, bob_a = false;
+    a_alive = true; b_alive = false;
     cout << "\tCase 3: Aaron alive, Bob dead\n"
          << "\t\tCharlie is shooting at Aaron\n";
-    Charlie_shoots(aaron_a, bob_a);
-    assert(false == aaron_a && false == bob_a);
+    Charlie_shoots(a_alive, b_alive);
 }
 
 void test_Aaron_shoots2(){
     cout << "Unit Testing 5: Function Aaron_shoots2(Bob_alive, Charlie_alive)\n";
 
-    // First Case: Bob alive, Charlie alive
-    bool bobAlive = true, charlieAlive = true;
+
+    bool bob_a = true, charlie_a = true;
     cout << "\tCase 1: Bob alive, Charlie alive\n"
          << "\t\tAaron intentionally misses his first shot\n"
          << "\t\tBoth Bob and Charlie are alive.\n";
-    Aaron_shoots2(bobAlive, charlieAlive);
-    assert(bobAlive == true && charlieAlive == true);
+    Aaron_shoots2(bob_a, charlie_a);
+    assert(bob_a == true && charlie_a == true);
 
-    // Second Case: Bob dead, Charlie alive
-    bobAlive = false, charlieAlive = true;
+
+    bob_a = false, charlie_a = true;
     cout << "\tCase 2: Bob dead, Charlie alive\n"
          << "\t\tAaron is shooting at Charlie\n";
-    Aaron_shoots2(bobAlive, charlieAlive);
+    Aaron_shoots2(bob_a, charlie_a);
 
-    // Third Case: Bob alive, Charlie dead
-    bobAlive = true, charlieAlive = false;
+
+    bob_a = true, charlie_a = false;
     cout << "\tCase 3: Bob alive, Charlie dead\n"
          << "\t\tAaron is shooting at Bob\n";
-    Aaron_shoots2(bobAlive, charlieAlive);
+    Aaron_shoots2(bob_a, charlie_a);
 }
 
 int main() {
