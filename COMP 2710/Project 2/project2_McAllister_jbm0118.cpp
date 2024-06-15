@@ -216,26 +216,26 @@ void test_Bob_shoots() {
 void test_Charlie_shoots(){
     cout << "Unit Testing 4: Function Charlie_shoots(Aaron_alive, Bob_alive)\n";
 
-    // First Case: Aaron alive, Bob alive
-    bool aaronAlive = true, bobAlive = true;
+
+    bool aaron_a = true, bob_a = true;
     cout << "\tCase 1: Aaron alive, Bob alive\n"
          << "\t\tCharlie is shooting at Bob\n";
-    Charlie_shoots(aaronAlive, bobAlive);
-    assert(false == bobAlive && true == aaronAlive);
+    Charlie_shoots(aaron_a, bob_a);
+    assert(false == bob_a && true == aaron_a);
 
-    // Second Case: Aaron dead, Bob alive
-    aaronAlive = false, bobAlive = true;
+
+    aaron_a = false, bob_a = true;
     cout << "\tCase 1: Aaron dead, Bob alive\n"
          << "\t\tCharlie is shooting at Bob\n";
-    Charlie_shoots(aaronAlive, bobAlive);
-    assert(false == bobAlive && false == aaronAlive);
+    Charlie_shoots(aaron_a, bob_a);
+    assert(false == bob_a && false == aaron_a);
 
-    // Third Case: Aaron alive, Bob dead
-    aaronAlive = true, bobAlive = false;
+
+    aaron_a = true, bob_a = false;
     cout << "\tCase 3: Aaron alive, Bob dead\n"
          << "\t\tCharlie is shooting at Aaron\n";
-    Charlie_shoots(aaronAlive, bobAlive);
-    assert(false == aaronAlive && false == bobAlive);
+    Charlie_shoots(aaron_a, bob_a);
+    assert(false == aaron_a && false == bob_a);
 }
 
 void test_Aaron_shoots2(){
