@@ -35,7 +35,7 @@ int charlieWins = 0;
 int aaronWins2 = 0;
 
 bool at_least_two_alive(bool A_alive, bool B_alive, bool C_alive) {
-    return ((A_alive || B_alive) || (B_alive && C_alive) || (A_alive && C_alive));
+    return ((A_alive && B_alive) || (B_alive && C_alive) || (A_alive && C_alive));
 }
 /* Input: A_alive indicates whether Aaron is alive */
 /* B_alive indicates whether Bob is alive */
