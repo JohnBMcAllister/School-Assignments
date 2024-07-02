@@ -117,3 +117,42 @@ bool check_file(string file) {
  return true;
 }
 
+vector<int> read_file(string file) {
+ // Input file stream. (ifstream)
+ ifstream stream;
+
+ // Vector containing numbers from file. (vector<int>)
+ vector<int> v;
+
+ // Integer read from file. (int)
+ int i;
+
+ // Add each number in the file to a vector.
+ stream.open(file.c_str());
+ while (stream.good()) {
+
+ }
+
+ return v;
+}
+
+void write_file(string file, vector<int> v) {
+ // Output file stream. (ofstream)
+
+}
+
+vector<int> merge(vector<int> v1, vector<int> v2) {
+
+}
+
+void to_string(string file, vector<int> v) {
+
+ // Vector interator number. (unsigned short)
+ unsigned short i;
+
+ // Display the numbers contained in a vector
+}
+
+
+
+
