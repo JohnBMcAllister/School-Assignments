@@ -1,4 +1,8 @@
 # ninja log v6
-4	212	7415867141633620	build.ninja	82f755518105ed84
+4	212	7416530708638101	build.ninja	82f755518105ed84
 2	338	7415867141903602	CMakeFiles/Project_3.dir/project3_McAllister_UserID.cpp.obj	ea081719caf79f62
 340	437	7415867145289389	Project_3.exe	37d9e1275b86d23
+10	716	7416530777192897	CMakeFiles/Project_3.dir/project3_McAllister_UserID.cpp.obj	ea081719caf79f62
+717	872	7416530784256921	Project_3.exe	37d9e1275b86d23
+7	430	7416536267589528	CMakeFiles/Project_3.dir/project3_McAllister_UserID.cpp.obj	ea081719caf79f62
+431	582	7416536271833085	Project_3.exe	37d9e1275b86d23

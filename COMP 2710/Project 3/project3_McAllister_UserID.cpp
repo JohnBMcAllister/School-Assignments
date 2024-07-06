@@ -10,6 +10,7 @@
 //Import Libraries
 #include <fstream>
 #include <iostream>
+#include <string.h>
 #include <vector>
 using namespace std;
 
@@ -64,22 +65,34 @@ int main() {
  vector<int> numbers2;
  vector<int> numbers3;
 
+ cout << "*** Welcome to McAllister's sorting program ***" << endl;
+
  /*
   * Get name of file two from User.
   * Validate the existence of the file one.
   */
  do {
+  cout << "Enter the first input file name: ";
+  cin >> file1;
 
+  check_file(file1);
  } while (cin.fail() || !check_file(file1));
 
  // Get and display numbers from file one.
  numbers1 = read_file(file1);
+
+ cout << "The list of " << numbers1.size() << "\n";
+ for()
 
  /*
   * Get name of file two from User.
   * Validate the existence of the file two.
   */
  do {
+  cout << "Enter the second input file name: ";
+  cin >> file2;
+
+  check_file(file2);
 
  } while (cin.fail() || !check_file(file2));
 
@@ -109,7 +122,11 @@ bool check_file(string file) {
 
  // Validate whether file exists.
  stream.open(file.c_str());
+ //Used Geeksforgeeks to learn cerr https://www.geeksforgeeks.org/get-error-message-when-ifstream-open-fails-in-cpp/#
  if (stream.fail()) {
+  cerr << "Error Details: " << strerror(errno);
+  stream.close();
+  return false;
 
  }
  stream.close();
@@ -130,7 +147,8 @@ vector<int> read_file(string file) {
  // Add each number in the file to a vector.
  stream.open(file.c_str());
  while (stream.good()) {
-
+  stream >> i;
+  v.push_back(i);
  }
 
  return v;
