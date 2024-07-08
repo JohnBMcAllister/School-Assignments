@@ -10,7 +10,6 @@
 //Import Libraries
 #include <fstream>
 #include <iostream>
-#include <string.h>
 #include <vector>
 using namespace std;
 
@@ -75,14 +74,21 @@ int main() {
   cout << "Enter the first input file name: ";
   cin >> file1;
 
-  check_file(file1);
+  if(!check_file(file1)) {
+   cout << "Error: File does not exist." << endl;
+  }
  } while (cin.fail() || !check_file(file1));
 
  // Get and display numbers from file one.
  numbers1 = read_file(file1);
 
- cout << "The list of " << numbers1.size() << "\n";
- for()
+ cout << "The list of " << numbers1.size() << " in file " << file1 << "is:" << endl;
+
+ //Clion suggested I used ranged-based loop instead of int i = 0; i < numbers1.size(); i++
+ // For loop to print the numbers in the file
+ for(int i : numbers1) {
+  cout << i << endl;
+ }
 
  /*
   * Get name of file two from User.
@@ -122,9 +128,7 @@ bool check_file(string file) {
 
  // Validate whether file exists.
  stream.open(file.c_str());
- //Used Geeksforgeeks to learn cerr https://www.geeksforgeeks.org/get-error-message-when-ifstream-open-fails-in-cpp/#
  if (stream.fail()) {
-  cerr << "Error Details: " << strerror(errno);
   stream.close();
   return false;
 
@@ -160,7 +164,8 @@ void write_file(string file, vector<int> v) {
 }
 
 vector<int> merge(vector<int> v1, vector<int> v2) {
-
+vector<int> v3;
+ return v3;
 }
 
 void to_string(string file, vector<int> v) {
