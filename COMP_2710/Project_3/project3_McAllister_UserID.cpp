@@ -10,6 +10,7 @@
 //Import Libraries
 #include <fstream>
 #include <iostream>
+#include <limits>
 #include <vector>
 using namespace std;
 
@@ -76,6 +77,8 @@ int main() {
 
   if(!check_file(file1)) {
    cout << "Error: File does not exist." << endl;
+   cin.clear(); // Clear the error state
+   cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore any remaining input
   }
  } while (cin.fail() || !check_file(file1));
 
