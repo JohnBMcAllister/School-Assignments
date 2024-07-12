@@ -120,10 +120,9 @@ int main() {
 
  // Combine list and display the sorted result.
  numbers3 = merge(numbers1, numbers2);
-
-cout << "\nThe sorted list of " << numbers3.size() << " numbers is: ";
- for(int numbers : numbers3) {
-  cout << numbers << " ";
+ cout << "\nThe sorted list of " << numbers3.size() << " numbers is: ";
+ for(int i = 0; i < numbers3.size(); i++) {
+  cout << numbers3[i] << " ";
  }
 
  // Get name of output file.
