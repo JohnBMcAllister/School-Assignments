@@ -187,8 +187,8 @@ void write_file(string file, vector<int> v) {
  // Output file stream. (ofstream)
  ofstream OutFile(file);
 
- for(int numbers : v) {
-  OutFile << numbers << endl;
+ for(int number : v) {
+  OutFile << number << endl;
  }
 
  OutFile.close();
@@ -197,12 +197,12 @@ void write_file(string file, vector<int> v) {
 vector<int> merge(vector<int> v1, vector<int> v2) {
 vector<int> v3;
 
- for(int number1: v1) {
-  v3.push_back(number1);
+ for(int i = 0; i < v1.size(); ++i) {
+  v3.push_back(v1[i]);
  }
 
- for(int number2: v2) {
-  v3.push_back(number2);
+ for(int i = 0; i < v2.size(); ++i) {
+  v3.push_back(v2[i]);
  }
 
  gnomeSort(v3);
