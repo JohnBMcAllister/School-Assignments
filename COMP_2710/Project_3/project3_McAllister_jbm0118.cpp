@@ -33,7 +33,7 @@ vector<int> read_file(string);
  * Param: file Name of file (string)
  * Param: List of int numbers (vector<int>)
  */
-void write_file(string, vector<int>);
+void write_file(const string&, const vector<int>&);
 
 /* vector method that merges the lists into one list
  *
@@ -182,12 +182,18 @@ vector<int> read_file(string file) {
  return v;
 }
 
-void write_file(string file, vector<int> v) {
+void write_file(const string& file, const vector<int>& v) {
  // Output file stream. (ofstream)
- ofstream OutFile(file);
+ ofstream OutFile(file.c_str());
 
- for(int number : v) {
-  OutFile << number << endl;
+ // Check if the file opened successfully
+ if (!OutFile) {
+  cerr << "Error opening file: " << file << endl;
+  return;
+ }
+
+ for (size_t i = 0; i < v.size(); ++i) {
+  OutFile << v[i] << endl;
  }
 
  OutFile.close();
