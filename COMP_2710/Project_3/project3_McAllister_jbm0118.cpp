@@ -4,13 +4,14 @@
  * Compilation  : g++ project3_McAllister_jbm0118.cpp -o project3.out
  * The foundation of my code comes from Dr. Li's lecture video "21_22.mp4"
  * and Project3_hints.pdf.
- *
+ * I used resources like ChatGPT to help with debugging issues
+ * I used the site GeeksforGeeks to learn gnomesort sorting algorithm.
+ * I used the site bgsu.edu to see examples of fstream
  */
 
 //Import Libraries
 #include <fstream>
 #include <iostream>
-#include <limits>
 #include <vector>
 using namespace std;
 
@@ -52,9 +53,9 @@ void to_string(string, vector<int>);
 
 /*
  * Sorts the 3rd vector after merging by using Gnome Sort
- * Used gnome sort because it is simple and I thought it was funny.
+ * Used gnome sort because it is simple and a cool concept.
  *
- * Time Complexity: O(N^2)
+ * Time Complexity: O(N^2) (Not the fastest)
  * Parem: Third vector containing values of the two merged vectors.
  */
 void gnomeSort(vector<int>&);
@@ -86,9 +87,6 @@ int main() {
 
   if(!check_file(file1)) {
    cout << "Error: File does not exist." << endl;
-   /* Ran into a bug where if user inputted c++ code, the cin wouldn't
-    * clear and run through the do-while loop mutlipe times. Found a site
-    * that taught me how to clear cin */
    cin.clear();
   }
  } while (cin.fail() || !check_file(file1));
@@ -109,7 +107,6 @@ int main() {
   if(!check_file(file2)) {
    cout << "Error: File does not exist." << endl;
    cin.clear();
-   cin.ignore(numeric_limits<streamsize>::max(), '\n');
   }
  } while (cin.fail() || !check_file(file2));
 
@@ -143,6 +140,7 @@ int main() {
 
 // Implementing the user-defined functions
 
+//Used Sample Code 2 to learn how to open a file.
 bool check_file(string file) {
  // Input file stream. (ifstream)
  ifstream stream;
@@ -159,6 +157,7 @@ bool check_file(string file) {
  return true;
 }
 
+//Used a combination of Sample Code 2 from Project3.pdf and ChatGPT to debug
 vector<int> read_file(string file) {
  // Input file stream. (ifstream)
  ifstream stream;
@@ -181,16 +180,10 @@ vector<int> read_file(string file) {
 
  return v;
 }
-
+//Used Dr. Li's video and a site "Writing Data to Files Using C++" on bgsu.edu
 void write_file(const string& file, const vector<int>& v) {
  // Output file stream. (ofstream)
  ofstream OutFile(file.c_str());
-
- // Check if the file opened successfully
- if (!OutFile) {
-  cerr << "Error opening file: " << file << endl;
-  return;
- }
 
  for (size_t i = 0; i < v.size(); ++i) {
   OutFile << v[i] << endl;
@@ -199,17 +192,21 @@ void write_file(const string& file, const vector<int>& v) {
  OutFile.close();
 }
 
+
 vector<int> merge(vector<int> v1, vector<int> v2) {
 vector<int> v3;
 
+ //Loop pushes the first vector into the third vector
  for(int i = 0; i < v1.size(); ++i) {
   v3.push_back(v1[i]);
  }
 
+ //Loop pushes the second vector into the third vector
  for(int i = 0; i < v2.size(); ++i) {
   v3.push_back(v2[i]);
  }
 
+ //Sorts the unsorted vector using gnome sort
  gnomeSort(v3);
 
  return v3;
@@ -231,6 +228,12 @@ void to_string(string file, vector<int> v) {
 void gnomeSort(vector<int>& v3) {
  int index = 0;
 
+ /* Gnome Sort Concept:
+  * the index starts at first element checks if there is a previous element.
+  * If there is no previous element, increment the index. If there is previous element then compare the elements
+  * If the previous element is larger than present element, swap the elements and decrement the index.
+  * If the previous element is smaller than present element, increment the index.
+  */
  while (index < v3.size()) {
   if (index == 0) {
    index++;
