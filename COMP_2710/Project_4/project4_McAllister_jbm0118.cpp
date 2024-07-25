@@ -50,34 +50,98 @@ public:
         addQuestionToList("How long was the shortest war on record? (Hint: how many minutes)", "38", 100);
     }
 
-    void displayTrivia() {
+    int countQuestions() {
+        int count = 0;
         TriviaNode* current = head;
         while (current != NULL) {
-            cout << "Question: " << current->question << endl;
-            cout << "Answer: " << current->answer << endl;
-            cout << "Points: " << current->points << endl;
-            cout << "------------------------" << endl;
+            count++;
             current = current->next;
         }
+        return count;
+    }
+
+    int askQuestions(int questions) {
+        int totalQuestions = countQuestions();
+
+        if (questions < 1) {
+            cout << "Warning - the number of trivia to be asked must equal to or be larger than 1." << endl;
+            return 0;
+        }
+
+        if (questions > totalQuestions) {
+            cout << "Warning - There are only " << totalQuestions << " trivia in the list." << endl;
+            return 0;
+        }
+
+        TriviaNode* current = head;
+        int totalPoints = 0;
+        int questionsAsked = 0;
+        string uAnswer;
+
+        while (current != NULL && questionsAsked < questions) {
+            cout << "Question: " << current->question << endl;
+            cout << "Answer: ";
+            cin >> uAnswer;
+
+            if(compareStrings(uAnswer, current->answer)) {
+                cout << "Your answer is correct! you recieve " << current->points << " points." << endl;
+                totalPoints =+ current->points;
+            } else {
+                cout << "Your answer is wrong. The correct answer is: " << current->answer << endl;
+            }
+
+            cout << "Your total points: " << totalPoints << endl;
+
+            current = current->next;
+            questionsAsked++;
+        }
+
+        return totalPoints;
+    }
+
+    // made a character so input isn't case sensitive. Had GeeksForGeeks help me here.
+    bool compareStrings(string& str1, string& str2)
+    {
+        if (str1.length() != str2.length())
+            return false;
+
+        for (int i = 0; i < str1.length(); ++i) {
+            if (tolower(str1[i]) != tolower(str2[i]))
+                return false;
+        }
+
+        return true;
     }
 };
 
 void UnitTest() {
     cout << "***This is a debugging version ***" << endl;
 
+    //Initializes the hard-coded questions to be tested
+    TriviaList triviaList;
+    triviaList.initializeTriviaList();
+
     cout << "Unit Test Case 1: Ask no question. The program should give a warning message." << endl;
-    // creates a function that takes the parameters of the linked list and int 0 to represent asking zero questions
-    // The output should be a cout that says "Warning - the number of trivia to be asked must equal to or be larger than 1.
+    triviaList.askQuestions(0);
     cout << "Case 1 Passed" << endl << endl;
 
     cout << "Unit Test Case 2.1: Ask 1 question in the linked list.\tThe tester enters an incorrect answer." << endl;
-    // same function as previous test but int is 1 instead of 0 to represent asking one question.
-    // The user should input the wrong answer and the message will be "Your answer is wrong. The correct answer is [answer] Your total points: [points]
+    triviaList.askQuestions(1);
     cout << "Case 2.1 passed" << endl << endl;
 
     cout << "Unit Test Case 2.2: Ask 1 question in the linked list.\tThe tester enters a correct answer." << endl;
-    // same function as previous test but inputs the right answer.
-    // The message out put should be "Your answer is correct! You receive 100 points.
+    triviaList.askQuestions(1);
+    cout << "Case 2.2 passed" << endl << endl;
+
+    cout << "Unit Test Case 3: Ask all the questions of the last trivia in the linked list." << endl;
+    triviaList.askQuestions(3);
+    cout << "Case 3 passed\n\n";
+
+    cout << "Unit Test Case 4: Ask 5 questions in the linked list." << endl;
+    triviaList.askQuestions(5);
+    cout << "Case 4 passed\n\n";
+
+    cout << "*** End of the Debugging Version ***";
 }
 
 // Defining Debug/Production versions
