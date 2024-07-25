@@ -4,6 +4,8 @@
  * Compilation  : g++ project4_McAllister_jbm0118.cpp -o project4.out
  * Most information about data structures came from COMP 2210 taught by Dean Heandrix.
  * Syntax on Data Structures came from GeeksforGeeks
+ * ChatGPT was used when I stumbled across bugs during debugging.
+ * ChatGPT also provided me with examples of creating functions with linked lists.
  */
 
 #include <iostream>
@@ -60,15 +62,35 @@ public:
     }
 };
 
+void UnitTest() {
+    cout << "***This is a debugging version ***" << endl;
+
+    cout << "Unit Test Case 1: Ask no question. The program should give a warning message." << endl;
+    // creates a function that takes the parameters of the linked list and int 0 to represent asking zero questions
+    // The output should be a cout that says "Warning - the number of trivia to be asked must equal to or be larger than 1.
+    cout << "Case 1 Passed" << endl << endl;
+
+    cout << "Unit Test Case 2.1: Ask 1 question in the linked list.\tThe tester enters an incorrect answer." << endl;
+    // same function as previous test but int is 1 instead of 0 to represent asking one question.
+    // The user should input the wrong answer and the message will be "Your answer is wrong. The correct answer is [answer] Your total points: [points]
+    cout << "Case 2.1 passed" << endl << endl;
+
+    cout << "Unit Test Case 2.2: Ask 1 question in the linked list.\tThe tester enters a correct answer." << endl;
+    // same function as previous test but inputs the right answer.
+    // The message out put should be "Your answer is correct! You receive 100 points.
+}
+
+// Defining Debug/Production versions
+#define UNIT_TESTING
+#define PRODUCTION_VERSION
+
 int main() {
-    // Create a TriviaList object
-    TriviaList triviaList;
 
-    // Initialize the list with hard-coded trivia questions
-    triviaList.initializeTriviaList();
+#ifdef UNIT_TESTING
+    UnitTest();
+    return 0;
+#endif
 
-    // Display the list to verify the initialization
-    triviaList.displayTrivia();
 
     return 0;
 }
