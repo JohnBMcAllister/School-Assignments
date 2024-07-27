@@ -1,7 +1,8 @@
 /* File Name    : project4_McAllister_jbm0118.cpp
  * Author       : JB McAllister
  * User ID      : jbm0118
- * Compilation  : g++ project4_McAllister_jbm0118.cpp -o project4.out
+ * Compilation (Production): g++ project4_McAllister_jbm0118.cpp -o project4.out
+ * Compilation (Unit Testing): g++ -DUNIT_TESTING project4_McAllister_jbm0118.cpp -o project4.out
  * Most information about data structures came from COMP 2210 taught by Dean Heandrix.
  * Syntax on Data Structures came from GeeksforGeeks
  * ChatGPT was used when I stumbled across bugs during debugging.
@@ -185,16 +186,15 @@ void UnitTest() {
     triviaList.askQuestions(5);
     cout << "Case 4 passed\n\n";
 
-    cout << "*** End of the Debugging Version ***";
+    cout << "*** End of the Debugging Version ***" << endl;
 }
 
-// Defining Debug/Production versions
-#define UNIT_TESTING
-#define PRODUCTION_VERSION
 
 int main() {
 
-#ifdef PRODUCTION_VERSION
+#ifdef UNIT_TESTING
+    UnitTest();
+#else
     TriviaList triviaList;
     cout << "*** Welcome to McAllister's trivia quiz game ***\n";
     triviaList.createQuestions();
@@ -202,11 +202,6 @@ int main() {
     cin.ignore();
     triviaList.askQuestions(triviaList.countQuestions());
     cout << "*** Thank you for playing the trivia quiz game. Goodbye ***" << endl;
-
-#endif
-
-#ifdef UNIT_TESTING
-    UnitTest();
 #endif
 
     return 0;
