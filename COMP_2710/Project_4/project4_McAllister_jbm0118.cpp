@@ -9,6 +9,7 @@
  */
 
 #include <iostream>
+#include <limits>
 using namespace std;
 
 //Step 1
@@ -44,6 +45,47 @@ public:
         head = newNode;
     }
 
+    void createQuestions() {
+        bool nextStep = false;
+
+        while (!nextStep) {
+            string question;
+            string answer;
+            int points;
+            string addMore;
+
+            cout << "Enter a Question: ";
+            cin.ignore(); // Clear input buffer
+            getline(cin, question);
+
+            cout << "Enter an answer: ";
+            getline(cin, answer);
+
+            cout << "Enter award points: ";
+            while (!(cin >> points)) {
+                cout << "Enter award points: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            addQuestionToList(question, answer, points);
+
+            cout << "Continue? (Yes/No): ";
+            cin >> addMore;
+
+            while (addMore != "Yes" && addMore != "No") {
+                cout << "Please enter \"Yes\" or \"No\": ";
+                cin >> addMore;
+            }
+
+            if (addMore == "No") {
+                nextStep = true;
+            }
+        }
+    }
+
     void initializeTriviaList() {
         addQuestionToList("What is the best-selling video game of all time? (Hint: Call of Duty or Wii Sports)?", "Wii Sports", 20);
         addQuestionToList("What was Bank of America's original name? (Hint: Bank of Italy or Bank of Germany)", "Bank of Italy", 50);
@@ -76,21 +118,23 @@ public:
         TriviaNode* current = head;
         int totalPoints = 0;
         int questionsAsked = 0;
-        string uAnswer;
 
+        //cin.ignore();
         while (current != NULL && questionsAsked < questions) {
+            string uAnswer;
+
             cout << "Question: " << current->question << endl;
             cout << "Answer: ";
-            cin >> uAnswer;
+            getline(cin, uAnswer);
 
             if(compareStrings(uAnswer, current->answer)) {
                 cout << "Your answer is correct! you recieve " << current->points << " points." << endl;
-                totalPoints =+ current->points;
+                totalPoints += current->points;
             } else {
                 cout << "Your answer is wrong. The correct answer is: " << current->answer << endl;
             }
 
-            cout << "Your total points: " << totalPoints << endl;
+            cout << "Your total points: " << totalPoints << endl << endl;
 
             current = current->next;
             questionsAsked++;
@@ -150,10 +194,25 @@ void UnitTest() {
 
 int main() {
 
+
+#ifdef PRODUCTION_VERSION
+    TriviaList triviaList;
+    cout << "*** Welcome to McAllister's trivia quiz game ***\n";
+    triviaList.createQuestions();
+    cout << endl;
+    cin.ignore();
+    triviaList.askQuestions(triviaList.countQuestions());
+    cout << "*** Thank you for playing the trivia quiz game. Goodbye ***";
+
+#endif
+
+
+/*
 #ifdef UNIT_TESTING
     UnitTest();
     return 0;
 #endif
+*/
 
 
     return 0;
