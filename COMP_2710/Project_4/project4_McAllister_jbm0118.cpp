@@ -191,7 +191,7 @@ void UnitTest() {
 
 
 int main() {
-
+/*
 #ifdef UNIT_TESTING
     UnitTest();
 #else
@@ -203,6 +203,6 @@ int main() {
     triviaList.askQuestions(triviaList.countQuestions());
     cout << "*** Thank you for playing the trivia quiz game. Goodbye ***" << endl;
 #endif
-
+*/
     return 0;
 }
