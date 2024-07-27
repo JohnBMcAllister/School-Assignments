@@ -2,21 +2,22 @@
  * Author       : JB McAllister
  * User ID      : jbm0118
  * Compilation (Production): g++ project4_McAllister_jbm0118.cpp -o project4.out
- * Compilation (Unit Testing): g++ -DUNIT_TESTING project4_McAllister_jbm0118.cpp -o project4.out
+ * Compilation (Unit Testing): g++ -DUNIT_TESTING project4_McAllister_jbm0118.cpp -o project4_testing.out
  * Most information about data structures came from COMP 2210 taught by Dean Heandrix.
- * Syntax on Data Structures came from GeeksforGeeks
+ * Syntax on Data Structures and the compare function came from GeeksforGeeks
  * ChatGPT was used when I stumbled across bugs during debugging.
  * ChatGPT also provided me with examples of creating functions with linked lists.
+ * Note: I imported Limits because cin would not work properly and this helped prevent
+ * the code from skipping over places where the user needed to input something.
  */
 
 #include <iostream>
 #include <limits>
 using namespace std;
 
-//Step 1
-class TriviaNode {
-// Used GeeksForGeeks
-public:
+//Node that stores Question, Answer, Points
+struct TriviaNode {
+
     string question;
     string answer;
     int points;
@@ -31,7 +32,8 @@ public:
     }
 };
 
-class TriviaList {
+// The linked list that the node will traverse
+struct TriviaList {
 private:
     TriviaNode* head;
 
@@ -40,12 +42,19 @@ public:
         head = NULL;
     }
 
+    /* Function that adds a question to list
+     *
+     * param: string q (question)
+     * parem: string a (answer)
+     * parem: int p (points)
+     */
     void addQuestionToList(string q, string a, int p) {
         TriviaNode* newNode = new TriviaNode(q, a, p);
         newNode->next = head;
         head = newNode;
     }
 
+    /* Function that asks for users to create questions */
     void createQuestions() {
         bool nextStep = false;
 
@@ -87,12 +96,14 @@ public:
         }
     }
 
+    // Function that hard codes the questions in debug
     void initializeTriviaList() {
         addQuestionToList("What is the best-selling video game of all time? (Hint: Call of Duty or Wii Sports)?", "Wii Sports", 20);
         addQuestionToList("What was Bank of America's original name? (Hint: Bank of Italy or Bank of Germany)", "Bank of Italy", 50);
         addQuestionToList("How long was the shortest war on record? (Hint: how many minutes)", "38", 100);
     }
 
+    // Function that counts how many questions in the linked list
     int countQuestions() {
         int count = 0;
         TriviaNode* current = head;
@@ -103,14 +114,20 @@ public:
         return count;
     }
 
+    /* Function that askes a question and awaits user's input
+     *
+     * Param: int questions (number of questions to answer)
+    */
     int askQuestions(int questions) {
         int totalQuestions = countQuestions();
 
+        // Validates user asks at least 1 question
         if (questions < 1) {
             cout << "Warning - the number of trivia to be asked must equal to or be larger than 1." << endl;
             return 0;
         }
 
+        // Validates user doesn't ask more than what is in linked list.
         if (questions > totalQuestions) {
             cout << "Warning - There are only " << totalQuestions << " trivia in the list." << endl;
             return 0;
@@ -120,7 +137,7 @@ public:
         int totalPoints = 0;
         int questionsAsked = 0;
 
-        //cin.ignore();
+        // Loop that goes through each question for user to answer
         while (current != NULL && questionsAsked < questions) {
             string uAnswer;
 
@@ -128,6 +145,7 @@ public:
             cout << "Answer: ";
             getline(cin, uAnswer);
 
+            // Checks if answer is right or wrong
             if(compareStrings(uAnswer, current->answer)) {
                 cout << "Your answer is correct! you recieve " << current->points << " points." << endl;
                 totalPoints += current->points;
@@ -144,7 +162,12 @@ public:
         return totalPoints;
     }
 
-    // made a character so input isn't case sensitive. Had GeeksForGeeks help me here.
+    /* Function that makes anwers not case sensitive
+     * Note: Used Geeks4Geeks to help create this.
+     *
+     * Parem: string& str1 (user's input)
+     * Parem: string& str2 (correct answer)
+    */
     bool compareStrings(string& str1, string& str2)
     {
         if (str1.length() != str2.length())
@@ -159,6 +182,7 @@ public:
     }
 };
 
+// Function that runs the entire debug version
 void UnitTest() {
     cout << "***This is a debugging version ***" << endl;
 
@@ -191,7 +215,7 @@ void UnitTest() {
 
 
 int main() {
-/*
+
 #ifdef UNIT_TESTING
     UnitTest();
 #else
@@ -203,6 +227,6 @@ int main() {
     triviaList.askQuestions(triviaList.countQuestions());
     cout << "*** Thank you for playing the trivia quiz game. Goodbye ***" << endl;
 #endif
-*/
+
     return 0;
 }
