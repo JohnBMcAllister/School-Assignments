@@ -194,7 +194,6 @@ void UnitTest() {
 
 int main() {
 
-
 #ifdef PRODUCTION_VERSION
     TriviaList triviaList;
     cout << "*** Welcome to McAllister's trivia quiz game ***\n";
@@ -202,18 +201,13 @@ int main() {
     cout << endl;
     cin.ignore();
     triviaList.askQuestions(triviaList.countQuestions());
-    cout << "*** Thank you for playing the trivia quiz game. Goodbye ***";
+    cout << "*** Thank you for playing the trivia quiz game. Goodbye ***" << endl;
 
 #endif
 
-
-/*
 #ifdef UNIT_TESTING
     UnitTest();
-    return 0;
 #endif
-*/
-
 
     return 0;
 }
