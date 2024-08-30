@@ -55,8 +55,10 @@ print(compoundWord[1:], "\n");
 #<editor-fold desc="Question 4">
 #Problem 4: Write a function that takes in a string name and prints out Hello, <name>!
 #your code here
-name = input("Enter you name: ");
-print("Hello, " + name + "!\n");
+def HelloName():
+    name = input("Enter you name: ");
+    print("Hello, " + name + "!\n");
+HelloName();
 #</editor-fold>
 
 #<editor-fold desc="Question 5">
