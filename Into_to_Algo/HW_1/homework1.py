@@ -4,6 +4,7 @@ install python (google it) and make sure you have python version 3.6+
 '''
 import random
 import time
+from math import floor
 
 '''
 Problem 1: Make your own hashmap class from scratch (using only python lists). dicts not allowed. This problem will be 75% of this homework
@@ -16,6 +17,76 @@ Implement insert(self, key, value), delete(self, key), get(self, key), and iter(
 See https://www.w3schools.com/python/python_iterators.asp for how to implement an iterator in python
 '''
 # your code here
+#Defining a linked list to use in the hash map to prevent collision using chaining
+class LinkedListNode:
+    def __init__(self, k = 1, v = 1, next = None):
+        self.k = k
+        self.v = v
+        self.next = next
+
+class HashLinkedList:
+
+    #initializes hashmap and constants for universal hashing
+    def __init__(self):
+        self.size = 1024
+        self.hash_table = self.buckets()
+        self.const_a = random.randint(1, self.size - 1)
+        self.const_b = random.randint(0, self.size - 1)
+
+    #
+    def buckets(self):
+        return [[] for _ in range(self.size)]
+
+    #operation for universal hashing to prevent the amount of collisions
+    def uni_hash(self, key):
+        #converts str to int for key
+        if isinstance(key, str):
+            key = int.from_bytes(key.encode('utf-8'), 'little')
+
+        return ((self.const_a * key + self.const_b) % 1033) % self.size
+
+    def insert(self, key, value):
+        index = self.uni_hash(key)
+        cur = self.hash_table[index]
+
+        # Check if the key already exists in the chain
+        while cur:
+            if cur.k == key:
+                cur.v = value
+                return
+            cur = cur.next
+
+        # If key is not found, insert a new node at the head of the list
+        new_node = LinkedListNode(key, value)
+        new_node.next = self.hash_table[index]
+        self.hash_table[index] = new_node
+
+    def delete(self, key):
+        index = self.uni_hash(key)
+        cur = self.hash_table[index]
+
+        # Traverse the list to find the node to delete
+        while cur and cur.next:
+            if cur.next.key == key:
+                cur.next = cur.next.next
+                return
+            cur = cur.next
+
+    def get(self, key):
+        index = self.uni_hash(key)
+        cur = self.hash_table[index]
+        while cur:
+            if cur.key == key:
+                return cur.v
+            cur = cur.next
+        return -1
+
+    def __iter__(self):
+        for bucket in self.hash_table:
+            cur = bucket
+            while cur:
+                yield cur.k, cur.v
+                cur = cur.next
 
 
 '''
