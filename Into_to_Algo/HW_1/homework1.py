@@ -4,7 +4,7 @@ install python (google it) and make sure you have python version 3.6+
 '''
 import random
 import time
-from math import floor
+from re import search
 
 '''
 Problem 1: Make your own hashmap class from scratch (using only python lists). dicts not allowed. This problem will be 75% of this homework
@@ -76,7 +76,7 @@ class HashLinkedList:
         index = self.uni_hash(key)
         cur = self.hash_table[index]
         while cur:
-            if cur.key == key:
+            if cur.k == key:
                 return cur.v
             cur = cur.next
         return -1
@@ -89,13 +89,31 @@ class HashLinkedList:
                 cur = cur.next
 
 
+
 '''
 Problem 2: Use your hashmap class to count the number of each substring of length k in a DNA sequence. 
 Print out the repeated items and the number of times they were repeated
 run it on string "ATCTTGGTTATTGCGTGGTTATTCTTGC" with k=4
 '''
 #your code here
+testString = "ATCTTGGTTATTGCGTGGTTATTCTTGC"
+testK = 4
+stringLength = len(testString)
+duplicateTest = 2
+hashMap = HashLinkedList()
 
+for i in range(stringLength - testK + 1):
+    substring = testString[i:i + testK]
+    hashCount = hashMap.get(substring)
+    if hashCount == -1:
+        hashMap.insert(substring, 1)
+    else:
+        hashMap.insert(substring, hashCount + 1)
+
+for key, value in hashMap:
+    if value >= duplicateTest:
+        print("Substring: " + key + " occurs " + str(value) + " times")
+print("\n")
 
 '''
 Problem 3: Two sum. This time just use the python dict or set. 
@@ -106,3 +124,59 @@ Compare the time taken between the implementations using the time package import
 '''
 A = [random.randint(0,1000000000) for i in range(10000)]
 target = A[random.randint(0, len(A)-1)] + A[random.randint(0,len(A)-1)]
+
+print("Method 1: Brute Force")
+start_time = time.time()
+lengthA = len(A)
+breakout = False
+
+for i in range(lengthA):
+    for j in range(lengthA):
+        if A[i] + A[j] == target:
+            print(str(A[i]) + " + " +str(A[j]) + " = " + str(target))
+            breakout = True
+    if breakout:
+        break
+
+print("Time taken: " + str(time.time() - start_time) + "seconds")
+
+print("\nMethod 2: Hashing")
+start_time = time.time()
+twoSumMap = HashLinkedList()
+
+for i in range(lengthA):
+    sumCount = twoSumMap.get(A[i])
+    if sumCount == -1:
+        twoMap = twoSumMap.insert(A[i], 1)
+    else:
+        twoMap = twoSumMap.insert(A[i], sumCount + 1)
+
+for i in A:
+    twoSumVal = target - i
+    if twoSumMap.get(twoSumVal) != -1:
+        print(str(twoSumVal) + " + " + str(i) + " = " + str(target))
+        break
+
+print("Time taken: " + str(time.time() - start_time) + "seconds")
+
+print("\nMethod 3: Binary Search")
+start_time = time.time()
+
+def binarySearch(array, target):
+    if len(array) == 0:
+        return False
+    midPointer = len(array) // 2
+    if target == array[midPointer]:
+        return midPointer
+    elif target < array[midPointer]:
+        return binarySearch(array[:midPointer], target)
+    elif target > array[midPointer]:
+        return binarySearch(array[midPointer + 1:], target)
+
+sortedArray = sorted(A)
+for i in sortedArray:
+    searchVal = target - i
+    if binarySearch(sortedArray, searchVal):
+        print(str(searchVal) + " + " + str(i) + " = " + str(target))
+
+print("Time taken: " + str(time.time() - start_time) + "seconds")
