@@ -4,7 +4,6 @@ install python (google it) and make sure you have python version 3.6+
 '''
 import random
 import time
-from re import search
 
 '''
 Problem 1: Make your own hashmap class from scratch (using only python lists). dicts not allowed. This problem will be 75% of this homework
@@ -16,7 +15,11 @@ For each key, there should be an associated value.
 Implement insert(self, key, value), delete(self, key), get(self, key), and iter(self) which only loops through non-empty key, value pairs.
 See https://www.w3schools.com/python/python_iterators.asp for how to implement an iterator in python
 '''
-# your code here
+# your code
+
+#This Youtube Helped me with some concepts and examples. It is only right I cite it as a source
+# https://youtu.be/cNWsgbKwwoU?si=Q5C_tAIu4L-eWxQ3
+
 #Defining a linked list to use in the hash map to prevent collision using chaining
 class LinkedListNode:
     def __init__(self, k = 1, v = 1, next = None):
