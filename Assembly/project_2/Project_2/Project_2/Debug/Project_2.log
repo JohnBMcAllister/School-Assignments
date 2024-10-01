@@ -1,0 +1,2 @@
+﻿main.obj : warning LNK4258: directive '/ENTRY:main@0' not compatible with switch '/ENTRY:main'; ignored
+  Project_2.vcxproj -> C:\Users\jbm0118\Documents\GitHub\School-Assignments\Assembly\project_2\Project_2\Debug\Project_2.exe
