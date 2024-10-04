@@ -5,6 +5,8 @@ install python (google it) and make sure you have python version 3.6+
 import random
 import time
 
+from matplotlib import pyplot as plt
+
 '''
 Problem 1: Implement your favorite n^2 sorting method
 '''
@@ -114,30 +116,47 @@ for inputs sizes 10000 to 300000 by 20k increments also run your n^2 method and 
 #your code here
 # inputs might look like A = [random.randint(0,1000000000) for i in range(100000)]
 
-A = [random.randint(0,1000000000) for i in range(100000)]
 
+gnomeSortSizes = range(10000, 300001, 20000)
+gnomeSortTimes = []
 
-start_time = time.time()
-gnomeArray = gnomeSort(A.copy())  # Use A.copy() to avoid sorting the same array
-elapsed_time = time.time() - start_time
+inputSizes = range(10000, 300001, 20000)
+mergeSortTimes = []
+quickSortRanTimes = []
+quickSortMedTimes = []
 
+for j in gnomeSortSizes:
+    A = [random.randint(0, 1000000000) for i in range(j)]
 
-start_time2 = time.time()
-sortedMergeArray = mergeSort(A.copy())
-elapsed_time2 = time.time() - start_time2
+    start_time = time.time()
+    gnomeSort(A.copy())
+    gnomeSortTimes.append(time.time() - start_time)
 
+for i in inputSizes:
+    A = [random.randint(0, 1000000000) for i in range(i)]
 
-start_time3 = time.time()
-sortedQuickRan = quickSortRan(A.copy())
-elapsed_time3 = time.time() - start_time3
+    start_time = time.time()
+    mergeSort(A.copy())
+    mergeSortTimes.append(time.time() - start_time)
 
+    start_time = time.time()
+    quickSortRan(A.copy())
+    quickSortRanTimes.append(time.time() - start_time)
 
-start_time4 = time.time()
-sortedQuickMed = quickSortMed(A.copy())
-elapsed_time4 = time.time() - start_time4
+    start_time = time.time()
+    quickSortMed(A.copy())
+    quickSortMedTimes.append(time.time() - start_time)
 
+plt.figure(figsize=(12,8))
+plt.plot(gnomeSortSizes, gnomeSortTimes, label="Gnome Sort", marker='o')
+plt.plot(inputSizes, mergeSortTimes, label="Merge Sort", marker='o')
+plt.plot(inputSizes, quickSortRanTimes, label="Quick Sort With Random Pivot", marker='o')
+plt.plot(inputSizes, quickSortMedTimes, label="Quick Sort With Median of 3 Random Pivots", marker='o')
 
-print("Gnome Sort took " + str(elapsed_time) + " seconds")
-print("Merge Sort took " + str(elapsed_time2) + " seconds")
-print("Quick Sort with random pivot took " + str(elapsed_time3) + " seconds")
-print("Quick Sort with median of 3 random pivots took " + str(elapsed_time4) + " seconds")
+plt.xlabel('Input Size')
+plt.ylabel('Time (seconds)')
+plt.title('Project 2')
+plt.legend()
+plt.grid(True)
+plt.show()
+
