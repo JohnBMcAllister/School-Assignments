@@ -1,5 +1,4 @@
-; Program Description: A program that goes through an array, adds the value of shift to each element, and stores
-; each value in its correct registers.
+; Program Description: A program that goes through an array, adds the value of shift to each element, and stores each value in its correct registers.
 ; Author: JB McAllister
 ; Creation Date: 10/03/2024
 
@@ -10,7 +9,7 @@ ExitProcess PROTO, dwExitCode:DWORD
 
 .data
 input BYTE 1, 2, 3, 4, 5, 6, 7, 8 ; input array of type byte
-shift BYTE 2                      ; shift value of type byte
+shift BYTE 2                       ; shift value of type byte
 
 .code
 main proc
