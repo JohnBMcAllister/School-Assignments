@@ -1,4 +1,5 @@
-; Program Description: A program that goes through an array, adds the value of shift to each element, and stores each value in its correct registers.
+; Program Description: A program that goes through an array, adds the value of 
+; shift to each element, and stores each value in its correct registers.
 ; Author: JB McAllister
 ; Creation Date: 10/03/2024
 
