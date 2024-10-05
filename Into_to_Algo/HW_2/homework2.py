@@ -117,10 +117,10 @@ for inputs sizes 10000 to 300000 by 20k increments also run your n^2 method and 
 # inputs might look like A = [random.randint(0,1000000000) for i in range(100000)]
 
 
-gnomeSortSizes = range(10000, 300001, 20000)
+gnomeSortSizes = range(10000, 20001, 1000)
 gnomeSortTimes = []
 
-inputSizes = range(10000, 300001, 20000)
+inputSizes = range(100000, 2000001, 100000)
 mergeSortTimes = []
 quickSortRanTimes = []
 quickSortMedTimes = []
