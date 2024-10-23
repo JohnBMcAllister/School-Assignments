@@ -5,6 +5,9 @@
     {
       "AbsoluteMoniker": "D:0:0:{0EC20ECD-39A3-469D-9509-6BF4990FA4DF}|Project_2.vcxproj|C:\\Users\\jbm0118\\Documents\\GitHub\\School-Assignments\\Assembly\\project_2\\Project_2\\main.asm||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{0EC20ECD-39A3-469D-9509-6BF4990FA4DF}|Project_2.vcxproj|solutionrelative:main.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Microsoft\\VC\\v170\\BuildCustomizations\\masm.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,17 +17,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "masm.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Microsoft\\VC\\v170\\BuildCustomizations\\masm.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Microsoft\\VC\\v170\\BuildCustomizations\\masm.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Microsoft\\VC\\v170\\BuildCustomizations\\masm.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Microsoft\\VC\\v170\\BuildCustomizations\\masm.targets",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAswEUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-10-15T18:21:03.924Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.asm",
               "DocumentMoniker": "C:\\Users\\jbm0118\\Documents\\GitHub\\School-Assignments\\Assembly\\project_2\\Project_2\\main.asm",
               "RelativeDocumentMoniker": "main.asm",
-              "ToolTip": "C:\\Users\\jbm0118\\Documents\\GitHub\\School-Assignments\\Assembly\\project_2\\Project_2\\main.asm",
-              "RelativeToolTip": "main.asm",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAswCoAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\jbm0118\\Documents\\GitHub\\School-Assignments\\Assembly\\project_2\\Project_2\\main.asm*",
+              "RelativeToolTip": "main.asm*",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAKAAAAAAAAAA==",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE/SURBVDhP1ZHJSgNBEIanJy5Ek7gEFZeLuJyEIKJnEbyLj\u002BrNsw\u002Bg4EURPKghuEaNimvG7xt7nsCDWPBNVfVUV//VnfzKsiyL0R9aQMUQfhyUMwjX8AxzcAiVEEKbui3iKyiR75E3iJspny5YvAAjsALzsATaGsXD\u002BFfogXXyOn4TaindOgR3UIIWjEEf3ES/DKp8h31QoTUe3FFBYU/gGKN59mP\u002Br0IZGvEwlajYuFs0qIHyesFiR7HhQPQPsIr0abx1E/AGWRrnM3GMW3iBD/BkWQSb7MI2nIDjqqSqAjs6q5vMP8GNIca\u002BxAzsgP9dr8CXsQt289RzF8Af3oWxdgqT4EVeuIB5QNugKMqNcXxrL/EYNuAI\u002BmE2xqr0vh4hr/P03Nhssylws3eh/Hu4jLkKzkC1B\u002BAzqvZ/W5J8A1MaZG5UkqpvAAAAAElFTkSuQmCC",
               "WhenOpened": "2024-09-23T18:45:31.026Z",
               "EditorCaption": ""
