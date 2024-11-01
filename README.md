@@ -9,10 +9,10 @@ Welcome to my **School Assignments** repository! Here you'll find a collection o
 
 ## 📚 Table of Contents
 
-- [🎯 Purpose]
-- [🛠️ Technologies Used]
-- [💻 Getting Started]
-- [📫 Contact]
+- 🎯 Purpose
+- 🛠️ Technologies Used
+- 💻 Getting Started
+- 📫 Contact
 
 ---
 
