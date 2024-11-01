@@ -18,7 +18,7 @@ Welcome to my **School Assignments** repository! Here you'll find a collection o
 
 ## 🎯 Purpose
 
-This repository serves as a personal archive of my academic work. It includes a variety of assignments, from programming projects to research papers, demonstrating my growth as a student and a developer.
+This repository serves as a personal archive of my academic work. It includes a variety of assignments, from programming projects to labs and activites, demonstrating my growth as a student and a developer.
 
 ## 🛠️ Technologies Used
 
@@ -40,4 +40,4 @@ Once cloned, navigate to the individual project folders for specific instruction
 
 If you have any questions or just want to connect, feel free to reach out!
   - Email: jbm0118@auburn.edu
-  - LinkedIn: https://www.linkedin.com/in/jb-mcallister/
+  - LinkedIn: [JB McAllister](https://www.linkedin.com/in/jb-mcallister/)
