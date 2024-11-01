@@ -6,3 +6,39 @@ Welcome to my **School Assignments** repository! Here you'll find a collection o
 [![Last Commit](https://img.shields.io/github/last-commit/JohnBMcAllister/School-Assignments?style=flat-square)](https://github.com/JohnBMcAllister/School-Assignments)
 
 ---
+
+## 📚 Table of Contents
+
+- [🎯 Purpose](#-purpose)
+- [🛠️ Technologies Used](#-technologies-used)
+- [💻 Getting Started](#-getting-started)
+- [📫 Contact](#-contact)
+
+---
+
+## 🎯 Purpose
+
+This repository serves as a personal archive of my academic work. It includes a variety of assignments, from programming projects to research papers, demonstrating my growth as a student and a developer.
+
+## 🛠️ Technologies Used
+
+- Python
+- Java
+- C++
+- x86 MASM Assembly
+  
+## 💻 Getting Started
+
+To explore my projects, simply clone the repository to your local machine:
+
+```bash
+ git clone https://github.com/JohnBMcAllister/School-Assignments.git
+```
+Once cloned, navigate to the individual project folders for specific instructions and requirements.
+
+## 📫 Contact
+
+If you have any questions or just want to connect, feel free to reach out!
+
+    Email: jbm0118@auburn.edu
+    LinkedIn: https://www.linkedin.com/in/jb-mcallister/
