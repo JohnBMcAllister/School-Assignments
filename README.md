@@ -9,10 +9,10 @@ Welcome to my **School Assignments** repository! Here you'll find a collection o
 
 ## 📚 Table of Contents
 
-- [🎯 Purpose](#-purpose)
-- [🛠️ Technologies Used](#-technologies-used)
-- [💻 Getting Started](#-getting-started)
-- [📫 Contact](#-contact)
+- [🎯 Purpose]
+- [🛠️ Technologies Used]
+- [💻 Getting Started]
+- [📫 Contact]
 
 ---
 
@@ -39,6 +39,5 @@ Once cloned, navigate to the individual project folders for specific instruction
 ## 📫 Contact
 
 If you have any questions or just want to connect, feel free to reach out!
-
-    Email: jbm0118@auburn.edu
-    LinkedIn: https://www.linkedin.com/in/jb-mcallister/
+  - Email: jbm0118@auburn.edu
+  - LinkedIn: https://www.linkedin.com/in/jb-mcallister/
