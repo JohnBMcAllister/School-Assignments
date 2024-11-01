@@ -6,12 +6,12 @@ pip install networkx
 pip install argparse
 '''
 
+#Command used to run program: python homework3.py --graph graph.pickle
+
 import argparse
 import networkx as nx
 import pickle
 import matplotlib.pyplot as plt
-
-from makegraph import edge_labels
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--graph", help="file containing graph in pickle format for problem 1")
@@ -48,13 +48,6 @@ class DisjointSet:
         if X != Y:
             self.forest[Y] = X
 
-
-    
-
-
-
-
-
 '''
 Problem 2
 find the minimum spanning tree of G using your disjoint set data structure above
@@ -86,33 +79,36 @@ def kruskal(G):
         V = ds.find(v)
 
         if U != V:
-            mst.add_edge(u, v, weight = data['weight'])
+            mst.add_edge(u, v, weight=data['weight'])
             ds.union(U, V)
 
-    # Calculate positions once for both graphs
-    pos = nx.spring_layout(G)
-    edge_labels = nx.get_edge_attributes(G, "weight")
+    return mst
 
-    # Draw the original graph with the same style
+
+def draw_mst(G, mst):
+    pos = nx.spring_layout(G)
+    plt.figure(figsize=(8, 8))
+
+    # Draw original graph edges in grey
+    original_edge_labels = nx.get_edge_attributes(G, "weight")
     nx.draw_networkx_edges(G, pos, width=1, edge_color='grey', alpha=0.5)
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=original_edge_labels, font_size=10)
+
+    # Draw original graph nodes and labels
     nx.draw_networkx_nodes(G, pos)
     nx.draw_networkx_labels(G, pos)
-    nx.draw_networkx_edge_labels(G, pos, edge_labels)
 
-    # Draw the MST edges on top of the original graph
-    nx.draw_networkx_edges(mst, pos, width=2, edge_color='yellow')
-
-    # Create edge labels for the MST
+    # Draw MST edges in red
     mst_edge_labels = nx.get_edge_attributes(mst, "weight")
-    nx.draw_networkx_edge_labels(mst, pos, edge_labels=mst_edge_labels)
+    nx.draw_networkx_edges(mst, pos, width=2, edge_color='red')
+    nx.draw_networkx_edge_labels(mst, pos, edge_labels=mst_edge_labels, font_size=10)
 
     plt.axis("off")
     plt.savefig('mst.png')
     plt.show()
 
-# load graphs and run functions
-
-graph = pickle.load(open(args.graph,'rb'))
-kruskal(graph)
+graph = pickle.load(open(args.graph, 'rb'))
+mst = kruskal(graph)
+draw_mst(graph, mst)
 
 
